@@ -20,13 +20,28 @@ const Login = () => {
     }, [user, pwd])
 
     const handleSubmit = async(e) => {
-
-
         e.preventDefault();
+            console.log(user,pwd);
+            setUser('');
+            setPwd('');
+            setSuccess(true);
+
+
     }
 
 
   return (
+
+    <>
+    {success ? (
+        <section>
+            <h1>You are logged in!</h1>
+            <br />
+            <p>
+                <a href="#">Go to Home</a>
+            </p>
+        </section>
+    ) : (
     <section>
 
         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
@@ -65,7 +80,10 @@ const Login = () => {
                         </span>
                     </p>
     </section>
+    )}
+    </>
   )
 }
+
 
 export default Login
